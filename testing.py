@@ -1,9 +1,25 @@
+import streamlit as st
+
 import pandas as pd
 import numpy as np
+import scipy
+import nltk
 
+
+@st.cache_data(ttl=600)
+def load_data(sheets_url):
+    csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
+    return pd.read_csv(csv_url)
+
+df = load_data(st.secrets["public_gsheets_url"])
+
+data = df
+
+
+nltk.download('wordnet')
 from tqdm.auto import tqdm, trange
 
-data = pd.read_csv('train_full.csv')
+# data = pd.read_csv('train_full.csv')
 data.shape
 data = data[:100000]
 data.head(5)
@@ -156,4 +172,4 @@ logreg = Pipeline([('vect', CountVectorizer()),
 
 logreg.fit((X_train.astype("U").str.lower()), (y_train.astype("U").str.lower()))
 y_pred = logreg.predict(X_test)
-print('accuracy %s' % accuracy_score(y_pred, y_test))
+st.write('accuracy %s' % accuracy_score(y_pred, y_test))
