@@ -1,7 +1,7 @@
-import streamlit as st from Lib
+import streamlit from Lib as st
 
-import pandas as pd from Lib
-import numpy as np from Lib
+import pandas from Lib as pd
+import numpy from Lib as np
 import scipy from Lib
 import nltk from Lib
 
