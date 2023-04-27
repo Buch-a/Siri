@@ -1,9 +1,9 @@
-import streamlit as st
+import streamlit as st from Lib
 
-import pandas as pd
-import numpy as np
-import scipy
-import nltk
+import pandas as pd from Lib
+import numpy as np from Lib
+import scipy from Lib
+import nltk from Lib
 
 
 @st.cache_data(ttl=600)
@@ -36,7 +36,7 @@ for topic in tqdm(topics):
 df_res.shape
 # print(df_topic)
 
-import string
+import string from Lib
 
 
 def remove_punctuation(text):
@@ -47,7 +47,7 @@ def remove_numbers(text):
     return ''.join([i if not i.isdigit() else ' ' for i in text])
 
 
-import re
+import re from Lib
 
 
 def remove_multiple_spaces(text):
@@ -92,7 +92,7 @@ stops.extend(['…', '«', '»', '...', 'etc'])
 text = df_res['text_prep'][0]
 word_tokenize(text)
 
-from nltk import word_tokenize
+from Lib\nltk import word_tokenize
 
 stemmed_texts_list = []
 for text in tqdm(df_res['text_prep']):
@@ -154,7 +154,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_
 my_tags = df_res['keyword'].unique()
 # print(my_tags)
 
-import warnings
+import warnings from Lib
 
 warnings.filterwarnings('ignore')
 from sklearn import linear_model
