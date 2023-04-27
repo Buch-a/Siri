@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 
-nltk.download('wordnet')
 from tqdm.auto import tqdm, trange
 
 data = pd.read_csv('train_full.csv')
